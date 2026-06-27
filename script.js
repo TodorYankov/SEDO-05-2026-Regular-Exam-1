@@ -1,7 +1,7 @@
-﻿// Helper to set box color with error handling
-function setBoxColor(color) {
+﻿// Helper to apply color to box with error handling
+function applyColor(color) {
   try {
-    var box = document.getElementById('box');
+    const box = document.getElementById('box');
     if (box) {
       box.style.backgroundColor = color;
     } else {
@@ -14,21 +14,22 @@ function setBoxColor(color) {
 
 // Apply text input color with validation
 document.getElementById('apply-btn').addEventListener('click', function() {
-  var color = document.getElementById('color-input').value.trim();
+  const color = document.getElementById('color-input').value.trim();
   if (color) {
-    setBoxColor(color);
+    applyColor(color);
   } else {
     console.warn('Empty color input ignored');
   }
 });
 
 // Generate a random hex color (always 6 digits)
-function randomHex() {
+function generateRandomHex() {
   return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
 }
 
 // Apply random color on button click
 document.getElementById('random-btn').addEventListener('click', function() {
-  var color = randomHex();
-  setBoxColor(color);
+  const color = generateRandomHex();
+  applyColor(color);
 });
+
